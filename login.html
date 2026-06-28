@@ -13,22 +13,17 @@
 checkAuth(false);
 </script>
 </head>
-
-
-
-
+<script src="auth.js"></script>
 <body>
 
-
-
-
     <div class="card">
-        <h2>Create Account</h2>
-        <p>Join FinTrack Pro</p>
-       <form id="signupForm">
+        <h2>Welcome Back</h2>
+        <p>Login to FinTrack Pro</p>
+        <form id="loginForm">
+
 
             <div>
-                <label for="username">Choose a Username</label>
+                <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
 
             </div>
@@ -38,46 +33,37 @@ checkAuth(false);
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit">Login</button>
 
-            <p>Already have an account? 
-                    <a href="login.html">Login here</a>
-            </p>
+            <p>Don't have an account? 
+            <a href="signup.html">Sign Up</a>
+</p>
         </form>
 
 
     </div>
 </body>
 
-<script src="auth.js"></script>
-
 <script>
-const form = document.getElementById("signupForm");
+const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", function(e){
 
     e.preventDefault();
 
     const username = document.getElementById("username").value;
-
     const password = document.getElementById("password").value;
 
-   const result = registerUser(username, password);
+    const result = loginUser(username,password);
 
-if(result.success){
-
-    alert(result.message);
-
-    window.location.href = "login.html";
-
-}else{
-
-    alert(result.message);
-
-}
+    if(result.success){
+        alert(result.message);
+        window.location.href = "main.html";
+    }else{
+        alert(result.message);
+    }
 
 });
 </script>
-
 
 </html>
